@@ -64,7 +64,6 @@ struct SoftwareEngineer
         float timeEnd;
         float currentTimeElapsed;
 
-		FIXME: only one blank line between UDTs/Functions/Members
         void timePasses() 
         {
             currentTimeElapsed += 1.00f;
@@ -72,9 +71,8 @@ struct SoftwareEngineer
     };
 
     bool isEngineersMeetingOver(Meeting meeting);
-
     void goToMeeting(Meeting meeting);
-	FIXME: only one blank line between UDTs/Functions/Members
+
 };
 
 /*
@@ -183,7 +181,6 @@ struct Kitchen
     Chef chef;
     Cook cook;
     Knife knife;
-	FIXME: only one blank line between UDTs/Functions/Members
 
     Meal produceMeal();
 };
