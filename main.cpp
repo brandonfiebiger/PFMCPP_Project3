@@ -23,6 +23,8 @@ struct Person
     float GPA;
     unsigned int SATScore;
     int distanceTraveled;
+    int currentSpeed;
+    
     Foot leftFoot;
     Foot rightFoot;
 
@@ -42,6 +44,7 @@ void Person::run( int howFast, bool startWithLeftFoot)
         rightFoot.stepForward();
         leftFoot.stepForward();
     }
+    currentSpeed = howFast;
     distanceTraveled += rightFoot.stepSize() + leftFoot.stepSize();
 }
 
@@ -106,8 +109,11 @@ bool SoftwareEngineer::isEngineersMeetingOver(Meeting meeting)
 }
 
 void SoftwareEngineer::goToMeeting(Meeting meeting)
-{
-    isAtMeeting = true;
+{   
+    if( meeting.isDevDiscussion) 
+    {
+        isAtMeeting = true;
+    }
 }
 
 /*
@@ -266,15 +272,13 @@ struct Kitchen
     Cook cook;
     Knife knife;
 
-    Meal produceMeal();
+    void produceMeal();
 };
 
-Meal Kitchen::produceMeal()
+void Kitchen::produceMeal()
 {
-    //maybe passes in Ingredients and returns some kind of dish
     Meal* meal;
     meal = new Meal();
-    //having trouble returning meal.
 }
 
 /*
