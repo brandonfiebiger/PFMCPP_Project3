@@ -277,8 +277,7 @@ struct Kitchen
 
 void Kitchen::produceMeal()
 {
-    Meal* meal; FIXME we haven't covered pointers yet
-    meal = new Meal(); FIXME this is a memory leak
+   //produces meal.
 }
 
 /*
