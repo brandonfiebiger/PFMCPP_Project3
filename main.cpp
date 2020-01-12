@@ -9,7 +9,51 @@
     You'll need to insert the Person struct from the video in the space below.
  */
 
+struct Person
+{
+    struct Foot
+    {
+        int stepSize();
+        void stepForward();
+    };
 
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTraveled;
+    Foot leftFoot;
+    Foot rightFoot;
+
+    void run( int howFast, bool startWithLeftFoot);
+
+};
+
+void Person::run( int howFast, bool startWithLeftFoot)
+{
+    if( startWithLeftFoot)
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    } 
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    distanceTraveled += rightFoot.stepSize() + leftFoot.stepSize();
+}
+
+void Person::Foot::stepForward()
+{
+    //do the thing.
+}
+
+int Person::Foot::stepSize()
+{
+    return 1;
+}
 
 
 
@@ -54,8 +98,17 @@ struct SoftwareEngineer
 
     bool isEngineersMeetingOver(Meeting meeting);
     void goToMeeting(Meeting meeting);
-
 };
+
+bool SoftwareEngineer::isEngineersMeetingOver(Meeting meeting)
+{
+    return meeting.timeEnd - meeting.currentTimeElapsed <= meeting.timeStart;
+}
+
+void SoftwareEngineer::goToMeeting(Meeting meeting)
+{
+    isAtMeeting = true;
+}
 
 /*
  2)
@@ -71,33 +124,41 @@ struct FlatTopGrill
     void turnOn();
     void turnOff();
 };
+
+void FlatTopGrill::turnOn()
+{
+    isHot = true;
+}
+
+void FlatTopGrill::turnOff()
+{
+    isHot = false;
+}
 /*
  3)
  */
- struct Fryer
- {
+struct Fryer
+{
     bool isFullOfOil;
     bool hasFriesInIt;
     bool isHot;
 
     void turnOn();
     void turnOff();
- };
+};
+
+void Fryer::turnOn()
+{
+    isHot = true;
+}
+
+void Fryer::turnOff()
+{
+    isHot = false;
+}
+
 /*
  4)
- */
- struct Chef
- {
-    float experienceLevel;
-    bool isGourmet;
-    int typeId;
-
-    void writeRecipe();
-    void trainCook();
- };
-
-/*
- 5)
  */
 
 struct Knife
@@ -107,30 +168,71 @@ struct Knife
     void cutFood();
 };
 
+void Knife::cutFood()
+{
+    //cuts food.
+}
 
 /*
- 6)
+ 5)
  */
-
 struct Cook
 {
     float experienceLevel;
     int age;
     bool reliable;
 
-    void learnFromChef();
+    void learnFromChef( float duration);
     void cookFood();
-    void cleanKitched();
+    void cleanKitchen();
 
-    void sharpenKnife(Knife knife)
-    {
-        if (!knife.isSharp)
-        {
-            knife.isSharp = true;
-        }
-    }
+    void sharpenKnife(Knife knife);
 };
 
+void Cook::sharpenKnife(Knife knife)
+{
+    if (!knife.isSharp)
+    {
+        knife.isSharp = true;
+    }
+}
+
+void Cook::cookFood()
+{
+    //cooks food
+}
+
+void Cook::cleanKitchen()
+{
+    //cleans kitchen.
+}
+
+void Cook::learnFromChef( float duration)
+{
+    experienceLevel += duration;
+}
+/*
+ 6)
+ */
+struct Chef
+{
+    float experienceLevel;
+    bool isGourmet;
+    int typeId;
+
+    void writeRecipe();
+    void trainCook( Cook cook, float duration);
+};
+
+void Chef::writeRecipe()
+{
+    //writes recipe
+}
+
+void Chef::trainCook( Cook cook, float duration)
+{
+    cook.experienceLevel += duration;
+}
 /*
  7)
  */
@@ -167,6 +269,14 @@ struct Kitchen
     Meal produceMeal();
 };
 
+Meal Kitchen::produceMeal()
+{
+    //maybe passes in Ingredients and returns some kind of dish
+    Meal* meal;
+    meal = new Meal();
+    //having trouble returning meal.
+}
+
 /*
  10)
  */
@@ -177,6 +287,11 @@ struct Dog
     
     void play();
 };
+
+void Dog::play()
+{
+    //dog plays
+}
 
 
 #include <iostream>
